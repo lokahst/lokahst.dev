@@ -16,13 +16,14 @@
 
         // Working on ---------------------
 
-        // Planned ---------------------
-
         {
             name: 'Enviromental update',
-            status: '3',
+            status: '2',
             description: 'Connects survival+weight system updates. Seasons, carry weight, resting, injuries, fast traveling, and time management.'
         },
+
+        // Planned ---------------------
+
         {
             name: 'Combat update',
             status: '3',
