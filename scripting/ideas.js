@@ -13,13 +13,18 @@
             status: '1',
             description: 'Ability to use this plugin with other economy plugins. Sell/buy items as armor, weapons or mentioned fish.'
         },
+        {
+            name: 'Enviromental update 1',
+            status: '1',
+            description: 'Connects survival+weight system updates. Seasons, carry weight, resting, injuries, fast traveling, and time management.'
+        },
 
         // Working on ---------------------
 
         {
-            name: 'Enviromental update',
+            name: 'Enviromental update 2',
             status: '2',
-            description: 'Connects survival+weight system updates. Seasons, carry weight, resting, injuries, fast traveling, and time management.'
+            description: 'More features for survival-based gameplay.'
         },
 
         // Planned ---------------------
@@ -54,7 +59,6 @@
             status: '3',
             description: 'Every single mob, loot, quest, etc.. will be different for every player.'
         },
-
 
         // Canceled ---------------------
 
