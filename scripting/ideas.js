@@ -2,26 +2,7 @@
     'use strict';
 
     const IDEAS = [
-        {
-            name: 'Magicka system',
-            status: '3',
-            description: 'It is there but have no purpose. But it could add even more functions to this plugin.'
-        },
-        {
-            name: 'PlaceholderAPI Support',
-            status: '3',
-            description: 'It\'s used in many plugins, why not here?'
-        },
-        {
-            name: 'NPC Support',
-            status: '3',
-            description: 'Maybe in very late version, there will be settings to add some quests to NPCs.'
-        },
-        {
-            name: 'World Bosses',
-            status: '3',
-            description: 'Adding dragons to overworld, with different damage and health, depending on player\'s level.'
-        },
+        // Added ---------------------
         {
             name: 'Fishing system',
             status: '1',
@@ -32,67 +13,88 @@
             status: '1',
             description: 'Ability to use this plugin with other economy plugins. Sell/buy items as armor, weapons or mentioned fish.'
         },
+
+        // Working on ---------------------
+
+        // Planned ---------------------
+
         {
-            name: 'Use of font',
+            name: 'Enviromental update',
             status: '3',
-            description: 'Change font used in GUIs, chats, or any interactions without use of texture packs. In config.'
+            description: 'Connects survival+weight system updates. Seasons, carry weight, resting, injuries, fast traveling, and time management.'
         },
         {
-            name: 'Custom texture pack',
+            name: 'Combat update',
             status: '3',
-            description: 'Specifically for LOTN. GUIs, weapons and armor, food.'
+            description: 'World bosses, armor rework, weapons rework, enchanting rework.'
         },
         {
-            name: 'Different races',
+            name: 'Magicka update',
             status: '3',
-            description: 'Different races with different abilities.'
+            description: 'Spells learning, spell books, magic potions.'
+        },
+        {
+            name: 'Alchemy & Crafting update',
+            status: '3',
+            description: 'New alchemy and crafting system. Creating new potions with various effects, using different ingredients.'
+        },
+        {
+            name: 'Adventure update',
+            status: '3',
+            description: 'Achievements, quests, side jobs.'
+        },
+        {
+            name: 'PlaceholderAPI Support',
+            status: '3',
+            description: 'It\'s used in many plugins, why not here?'
         },
         {
             name: 'Per-Player',
             status: '3',
             description: 'Every single mob, loot, quest, etc.. will be different for every player.'
         },
+
+
+        // Canceled ---------------------
+
         {
-            name: 'Weight system',
-            status: '3',
-            description: 'Every weapon, armor, food, etc.. will have a weight. If carrying too much, player will be slower and can\'t run.'
+            name: 'NPC Support',
+            status: '4',
+            description: 'Too complex and not worth it. Server owners can still use Citizens and use quests from this plugin.'
+        },
+        {
+            name: 'Texture pack & font',
+            status: '4',
+            description: 'Not worth it for now.'
+        },
+        {
+            name: 'Different races',
+            status: '4',
+            description: 'Players will always chose to have the best race with the best starting stats.'
         },
         {
             name: 'New villages',
-            status: '3',
-            description: 'Generate new villages with better and more buildings and population.'
-        },
-        {
-            name: 'Alchemy',
-            status: '3',
-            description: 'System for creating new potions with various effects. That means completely new crafting system.'
-        },
-        {
-            name: 'Resting and sleeping',
-            status: '3',
-            description: 'Instead of sleeping through the night, you can select how many hours to rest.'
-        },
-        {
-            name: 'Survival',
-            status: '2',
-            description: 'Enhancing whole survival with thirst, sleep, temperature, illness, and everything else.'
+            status: '4',
+            description: 'I\'m not exactly builder. And I have no idea how to add custom object generating to plugin.'
         },
     ];
 
     const STATUS_LABELS = {
         '1': 'added',
         '2': 'progress',
-        '3': 'considering'
+        '3': 'planned',
+        '4': 'canceled'
     };
 
     const FILTERS = [
         { key: 'all', label: 'All' },
         { key: '1', label: 'Added' },
         { key: '2', label: 'In progress' },
-        { key: '3', label: 'Considering' }
+        { key: '3', label: 'Planned' },
+        { key: '4', label: 'Canceled' }
     ];
 
-    const STATUS_ORDER = ['1', '2', '3'];
+    const STATUS_ORDER = ['1', '2', '3', '4'];
 
     let activeFilter = 'all';
     let board = null;
