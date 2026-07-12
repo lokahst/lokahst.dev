@@ -52,6 +52,31 @@
             status: '3',
             description: 'Every single mob, loot, quest, etc.. will be different for every player.'
         },
+        {
+            name: 'Weight system',
+            status: '3',
+            description: 'Every weapon, armor, food, etc.. will have a weight. If carrying too much, player will be slower and can\'t run.'
+        },
+        {
+            name: 'New villages',
+            status: '3',
+            description: 'Generate new villages with better and more buildings and population.'
+        },
+        {
+            name: 'Alchemy',
+            status: '3',
+            description: 'System for creating new potions with various effects. That means completely new crafting system.'
+        },
+        {
+            name: 'Resting and sleeping',
+            status: '3',
+            description: 'Instead of sleeping through the night, you can select how many hours to rest.'
+        },
+        {
+            name: 'Survival',
+            status: '2',
+            description: 'Enhancing whole survival with thirst, sleep, temperature, illness, and everything else.'
+        },
     ];
 
     const STATUS_LABELS = {
