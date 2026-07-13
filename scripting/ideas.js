@@ -24,7 +24,7 @@
         {
             name: 'Enviromental update 2',
             status: '2',
-            description: 'More features for survival-based gameplay.'
+            description: 'More survival-like features.'
         },
 
         // Planned ---------------------
