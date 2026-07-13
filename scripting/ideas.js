@@ -50,6 +50,11 @@
             description: 'Adds many new effects and particles in fights, (spells), potions, and other things.'
         },
         {
+            name: 'Reimagination update',
+            status: '3',
+            description: 'Completely custom realistically generated world. Disabled Nether & End. '
+        },
+        {
             name: 'Adventure update',
             status: '3',
             description: 'Achievements, quests, side jobs.'
