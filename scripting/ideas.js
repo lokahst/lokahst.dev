@@ -45,6 +45,11 @@
             description: 'New alchemy and crafting system. Creating new potions with various effects, using different ingredients.'
         },
         {
+            name: 'Re-effecting update',
+            status: '3',
+            description: 'Adds many new effects and particles in fights, (spells), potions, and other things.'
+        },
+        {
             name: 'Adventure update',
             status: '3',
             description: 'Achievements, quests, side jobs.'
