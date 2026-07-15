@@ -26,48 +26,53 @@
             status: '2',
             description: 'More survival-like features.'
         },
-
-        // Planned ---------------------
-
+       {
+            name: 'Re-effecting update',
+            status: '2',
+            description: 'Adds many new effects and particles in fights, (spells), potions, and other things.'
+        },
+        {
+            name: 'Adventure update',
+            status: '2',
+            description: 'Achievements, quests, side jobs.'
+        },
+        {
+            name: 'Per-Player',
+            status: '2',
+            description: 'Every single mob, loot, quest, etc.. will be different for every player.'
+        },
+        {
+            name: 'PlaceholderAPI Support',
+            status: '2',
+            description: 'It\'s used in many plugins, why not here?'
+        },
         {
             name: 'Combat update',
-            status: '3',
+            status: '2',
             description: 'World bosses, armor rework, weapons rework, enchanting rework.'
         },
         {
             name: 'Magicka update',
-            status: '3',
+            status: '2',
             description: 'Spells learning, spell books, magic potions.'
         },
         {
             name: 'Alchemy & Crafting update',
-            status: '3',
+            status: '2',
             description: 'New alchemy and crafting system. Creating new potions with various effects, using different ingredients.'
         },
-        {
-            name: 'Re-effecting update',
-            status: '3',
-            description: 'Adds many new effects and particles in fights, (spells), potions, and other things.'
-        },
+
+        // Planned ---------------------
+
         {
             name: 'Reimagination update',
             status: '3',
             description: 'Completely custom realistically generated world. Disabled Nether & End. '
         },
         {
-            name: 'Adventure update',
+            name: 'Different races',
             status: '3',
-            description: 'Achievements, quests, side jobs.'
-        },
-        {
-            name: 'PlaceholderAPI Support',
-            status: '3',
-            description: 'It\'s used in many plugins, why not here?'
-        },
-        {
-            name: 'Per-Player',
-            status: '3',
-            description: 'Every single mob, loot, quest, etc.. will be different for every player.'
+            description: 'Players will always chose to have the best race with the best starting stats.'
         },
 
         // Canceled ---------------------
@@ -81,11 +86,6 @@
             name: 'Texture pack & font',
             status: '4',
             description: 'Not worth it for now.'
-        },
-        {
-            name: 'Different races',
-            status: '4',
-            description: 'Players will always chose to have the best race with the best starting stats.'
         },
         {
             name: 'New villages',
