@@ -10,7 +10,7 @@
     <meta name="author" content="LokAhst">
     <meta name="keywords" content="LokAhst, Minecraft plugin, LOTN, Legends of the North, Minecraft server, Spigot plugin, Modrinth, game development">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#366DA0">
+    <meta name="theme-color" content="#526F91">
 
     <meta property="og:title" content="LokAhst">
     <meta property="og:description" content="Developer of Legends of the North (LOTN) Minecraft plugin. Working independently on Minecraft plugins.">
@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="styling/ideas.css">
     <link rel="stylesheet" href="styling/animations.css">
     <link rel="stylesheet" href="styling/responsive.css">
+    <link rel="stylesheet" href="styling/rpg.css">
 
     <style>
         .value-icon i {font-size: 2.5rem;}
@@ -57,11 +58,11 @@
                 <span class="nav-toggle-line"></span>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#lotn" class="nav-link">LOTN</a></li>
-                <li><a href="#why" class="nav-link">Why LOTN?</a></li>
+                <li><a href="#about" class="nav-link">Profile</a></li>
+                <li><a href="#lotn" class="nav-link">Featured Project</a></li>
+                <li><a href="Team.html" class="nav-link">Team</a></li>
+                <li><a href="#ideas" class="nav-link">Roadmap</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
-                <li><a href="#ideas" class="nav-link">Ideas</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -78,10 +79,15 @@
         <div class="hero-atmosphere"></div>
         <div class="hero-content">
             <div class="hero-text-container">
+                <p class="hero-eyebrow fade-up"><span class="status-pulse"></span> Independent developer</p>
                 <h1 class="hero-title fade-up">
                     <span class="hero-title-line">LokAhst</span>
                 </h1>
-                <p class="hero-subtitle fade-up">Minecraft Plugin Developer</p>
+                <p class="hero-copy fade-up">After fulfilling one's dreams, the time comes to set out on one's own path.</p>
+                <div class="hero-actions fade-up">
+                    <a href="#lotn" class="btn btn-primary"><i class="fas fa-compass"></i> Explore the project</a>
+                    <a href="#contact" class="btn btn-ghost"><i class="fas fa-feather-pointed"></i> Send a message</a>
+                </div>
             </div>
         </div>
 
@@ -91,36 +97,13 @@
     <section class="about section" id="about">
         <div class="container">
             <div class="section-header fade-up">
-                <h2 class="section-title">Me, Myself and I</h2>
+                <span class="section-kicker">Developer profile</span>
+                <h2 class="section-title">About me</h2>
                 <div class="section-divider"></div>
             </div>
-            <div class="about-content">
-                <div class="about-text fade-up">
-                    <p class="about-body">I'm a Minecraft plugin developer with "just a little of experience" - also in Minecraft servers. Created few plugins under different names, for different servers and some with hundreds or thousands of downloads.</p>
-                </div>
-                <div class="about-values fade-up">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h3 class="value-title">Quality</h3>
-                        <p class="value-desc">This is main focus..</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="fas fa-hourglass-end"></i>
-                        </div>
-                        <h3 class="value-title">Patience</h3>
-                        <p class="value-desc">..and it will take a long time to complete..</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="fas fa-flag-checkered"></i>
-                        </div>
-                        <h3 class="value-title">Finish</h3>
-                        <p class="value-desc">..but it will be worth it.</p>
-                    </div>
-                </div>
+            <div class="about-content about-simple fade-up">
+                <p class="about-body">I'm a Minecraft plugin developer and former server owner with several years of experience creating plugins and helping build servers that are still enjoyed by active communities today.</p>
+                <p class="about-body">Now there is new start. After leaving groups and communities, It's time to build another plugins for other players.</p>
             </div>
         </div>
     </section>
@@ -128,8 +111,9 @@
     <section class="lotn section" id="lotn">
         <div class="container">
             <div class="lotn-header fade-up">
+                <span class="section-kicker">Featured project · active development</span>
                 <h2 class="lotn-title">Legends of the North</h2>
-                <p class="lotn-tagline">"Expand vanilla Minecraft with an immersive Skyrim-inspired RPG experience featuring leveling, combat skills, enchantments, and scalable mobs."</p>
+                <p class="lotn-tagline">Skyrim-Inspired RPG plugin with everything you need in one place.</p>
                 <div class="lotn-created-badge">
                     <i class="lotn-badge-icon fas fa-calendar"></i>
                     <span>Project created: July 7, 2026</span>
@@ -138,7 +122,7 @@
 
             <div class="lotn-content">
                 <div class="lotn-description fade-up">
-                    <p>The plugin isn't story-driven(it wont be), but it includes mechanics inspired by the game mentioned above, such as Health, Stamina, and Magicka. Currently, only Health and Stamina are functional. Magicka is there for now... mostly as decoration.</p>
+                    <p>LOTN is not a story-driven plugin. Instead, it brings whole RPG mechanics into one big file. From skills to enchanting, levels to level-based enemies. Everything you need in a single RPG plugin.</p>
                 </div>
 
                 <div class="lotn-features fade-up">
@@ -160,13 +144,13 @@
                             <span class="feature-icon">
                                 <i class="fas fa-star"></i>
                             </span>
-                            <span class="feature-text">Disenchant gear to permamently learn its magical effects</span>
+                            <span class="feature-text">Disenchant gear to permanently learn its magical effects</span>
                         </li>
                         <li class="feature-item">
                             <span class="feature-icon">
                                 <i class="fas fa-star"></i>
                             </span>
-                            <span class="feature-text">Designed to enchance not remove</span>
+                            <span class="feature-text">Designed to enhance vanilla, not replace it</span>
                         </li>
                     </ul>
                 </div>
@@ -175,7 +159,7 @@
                     <h3 class="status-title">Development Status</h3>
                     <div class="status-bar-container">
                         <div class="status-bar">
-                            <div class="status-progress" style="--progress: 2%;"></div>
+                            <div class="status-progress" style="--progress: 4%;"></div>
                         </div>
                     </div>
                 </div>
@@ -195,7 +179,7 @@
                             <i class="fas fa-info-circle"></i>
                         </div>
                         <div class="warning-content">
-                            <h4 class="warning-title">Modrinth Not Yet Public</h4>
+                            <h4 class="warning-title">Modrinth is not public yet</h4>
                             <p class="warning-text">I'm still waiting for Modrinth to approve this project.</p>
                         </div>
                     </div>
@@ -266,15 +250,15 @@
     <section class="why section" id="why">
         <div class="container">
             <div class="section-header fade-up">
-                <h2 class="section-title">Why LOTN?</h2>
+                <span class="section-kicker">Design philosophy</span>
+                <h2 class="section-title">Why build LOTN?</h2>
                 <div class="section-divider"></div>
             </div>
             <div class="why-content">
                 <div class="why-text fade-up">
-                    <p class="why-body">There are many really good MMORPG/RPG plugins that have many features and maybe even years of development. But will LOTN be one of them? One of "really good" ones?</p>
-                    <p class="why-body">That's good questions and hopefully there is a good answer.</p>
-                    <p class="why-body">Developing MMORPG/RPG plugins is really hard thing to do because of many mechanics, many parts that are connected to eachother. If one part fail, half of plugin is broken. So that's why it will take a long time to optimize it and make it playable.</p>
-                    <p class="why-body">So practically.. there isn't answer to that question yet. Because it's new. Not many people know the plugin. And this plugin does not have any special functions that are ahead of others. But let's try the best.</p>
+                    <p class="why-body">There are already a lot of great RPG plugins for Minecraft. In fact, around 200 RPG plugins are released every year, and many of them eventually get abandoned. Building and maintaining one takes a ridiculous amount of work.</p>
+                    <p class="why-body">I started building LOTN because I wanted one to make an RPG that is inspired by my favorite game "The Elder Scrolls V: Skyrim". And that's why it takes so much time to release updates. If you take it in this way.. Skyrim is a huge game with a lot of content. </p>
+                    <p class="why-body">LOTN is still in Early Access. Some parts are finished, some being reworked, and plenty are still just ideas. This page is here to show exactly where the project stands.</p>
                 </div>
             </div>
         </div>
@@ -283,7 +267,8 @@
     <section class="faq section" id="faq">
         <div class="container">
             <div class="section-header fade-up">
-                <h2 class="section-title">FAQ</h2>
+                <span class="section-kicker">Project information</span>
+                <h2 class="section-title">Frequently asked questions</h2>
                 <div class="section-divider"></div>
             </div>
             <div class="faq-list fade-up">
@@ -293,7 +278,7 @@
                         <span class="faq-icon"><i class="fas fa-plus"></i></span>
                     </button>
                     <div class="faq-answer">
-                        <p>No, and for now it will stay like that.</p>
+                        <p>It's not, and <b>for now</b> it will stay like that.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -302,7 +287,7 @@
                         <span class="faq-icon"><i class="fas fa-plus"></i></span>
                     </button>
                     <div class="faq-answer">
-                        <p>The best version is 1.21.x. Should work on 1.20 and newest versions.</p>
+                        <p>The best version is 1.21.11.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -325,20 +310,11 @@
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span class="faq-question-text">PlaceholderAPI support?</span>
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>It will be added in future updates.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
                         <span class="faq-question-text">How long will it take for a stable version to be released?</span>
                         <span class="faq-icon"><i class="fas fa-plus"></i></span>
                     </button>
                     <div class="faq-answer">
-                        <p>Months.</p>
+                        <p>~2 months.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -347,7 +323,7 @@
                         <span class="faq-icon"><i class="fas fa-plus"></i></span>
                     </button>
                     <div class="faq-answer">
-                        <p>Not as a developer. You can be tester (for now).</p>
+                        <p>Yes, as a tester.</p>
                     </div>
                 </div>
             </div>
@@ -357,7 +333,8 @@
     <section class="ideas section" id="ideas">
         <div class="container">
             <div class="section-header fade-up">
-                <h2 class="section-title">Ideas</h2>
+                <span class="section-kicker">Project planning</span>
+                <h2 class="section-title">The development roadmap</h2>
                 <div class="section-divider"></div>
             </div>
             <div class="ideas-intro fade-up">
@@ -371,25 +348,27 @@
     <section class="contact section" id="contact">
         <div class="container">
             <div class="section-header fade-up">
-                <h2 class="section-title">Get in Touch</h2>
+                <span class="section-kicker">Contact</span>
+                <h2 class="section-title">Ways to connect</h2>
                 <div class="section-divider"></div>
             </div>
             <div class="contact-content fade-up">
-                <p class="contact-text">Interested? Want to be tester? Or just ask questions? Reach out.</p>
+                <p class="contact-text">Questions, bug reports, testing interest, or ideas for LOTN are all welcome.</p>
                 <div class="contact-links">
                     <a href="mailto:lokahst@gmail.com" class="contact-link">
                         <i class="contact-icon fas fa-envelope"></i>
-                        <span>lokahst@gmail.com</span>
+                        <span><small>Direct message</small>lokahst@gmail.com</span>
                     </a>
                     <a href="/discord.html" class="contact-link">
                         <i class="contact-icon fab fa-discord"></i>
-                        <span>Discord</span>
+                        <span><small>Community</small>Discord</span>
                     </a>
-                    <a href="https://github.com/lokahst" class="contact-link">
+                    <a href="https://github.com/lokahst" class="contact-link" target="_blank" rel="noopener noreferrer">
                         <i class="contact-icon fab fa-github"></i>
-                        <span>GitHub</span>
+                        <span><small>Development</small>GitHub</span>
                     </a>
                 </div>
+                <p class="response-note"><i class="fas fa-circle-info"></i> For support, include your server version, plugin version, and any relevant console error.</p>
             </div>
         </div>
     </section>
@@ -401,6 +380,7 @@
                 <p class="footer-copyright">&copy; 2026 LokAhst. All rights reserved.</p>
                 <nav class="footer-links" aria-label="Footer">
                     <a href="terms.html" class="footer-link">Terms</a>
+                    <a href="Team.html" class="footer-link">Team</a>
                     <a href="discord.html" class="footer-link">Discord</a>
                 </nav>
             </div>
@@ -408,7 +388,6 @@
     </footer>
 
     <script defer src="scripting/mountains.js"></script>
-    <script defer src="scripting/parallax.js"></script>
     <script defer src="scripting/scroll.js"></script>
     <script defer src="scripting/animations.js"></script>
     <script defer src="scripting/modrinth.js"></script>

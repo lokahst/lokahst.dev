@@ -9,7 +9,7 @@
     <meta name="description" content="Terms of use for the Legends of the North (LOTN) Minecraft plugin and the LokAhst website.">
     <meta name="author" content="LokAhst">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#366DA0">
+    <meta name="theme-color" content="#526F91">
 
     <meta property="og:title" content="Terms - LokAhst">
     <meta property="og:description" content="Terms of use for the Legends of the North (LOTN) Minecraft plugin and the LokAhst website.">
@@ -25,8 +25,9 @@
 
     <link rel="stylesheet" href="styling/main.css">
     <link rel="stylesheet" href="styling/animations.css">
-    <link rel="stylesheet" href="styling/terms.css">
     <link rel="stylesheet" href="styling/responsive.css">
+    <link rel="stylesheet" href="styling/rpg.css">
+    <link rel="stylesheet" href="styling/terms.css">
 
     <link rel="icon" type="image/svg+xml" href="assets/lotn_black.png">
     <link rel="apple-touch-icon" href="assets/lotn_black.png">
@@ -35,7 +36,7 @@
         (function(){var t=localStorage.getItem('lokahst-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}})();
     </script>
 </head>
-<body>
+<body class="terms-page">
     <nav class="nav" id="nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -47,8 +48,9 @@
                 <span class="nav-toggle-line"></span>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html#about" class="nav-link">About</a></li>
-                <li><a href="index.html#lotn" class="nav-link">LOTN</a></li>
+                <li><a href="index.html#about" class="nav-link">Profile</a></li>
+                <li><a href="index.html#lotn" class="nav-link">Featured Project</a></li>
+                <li><a href="Team.html" class="nav-link">Team</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -61,35 +63,44 @@
     <section class="terms section" id="terms">
         <div class="container">
             <div class="section-header fade-up">
+                <span class="section-kicker">Legal information</span>
                 <h2 class="section-title">Terms of Use</h2>
                 <div class="section-divider"></div>
+                <div class="terms-meta">
+                    <span><i class="far fa-calendar"></i> Effective July 15, 2026</span>
+                </div>
             </div>
 
             <div class="terms-content fade-up">
 
-                <div class="terms-block">
+                <article class="terms-block">
+                    <span class="terms-number">01</span>
                     <h3 class="terms-heading">
                         <span class="terms-heading-icon"><i class="fas fa-flask"></i></span>
                         Development Versions
                     </h3>
-                    <p>The plugin must not be used in public, active communities or networks while its version is in alpha (Early Access) or beta. During these development stages, the software is unstable and intended for private testing and feedback only. Running it on live, public servers is not good idea until a stable release is published.</p>
-                </div>
+                    <p>This plugin is in early development (EarlyAccess versions) and should only be used for testing and feedback purposes. Using it on large servers may cause small problems with instability of THIS plugin. Make a backup before installing this plugin into your server.</p>
+                </article>
 
-                <div class="terms-block">
+                <article class="terms-block">
+                    <span class="terms-number">02</span>
                     <h3 class="terms-heading">
                         <span class="terms-heading-icon"><i class="fas fa-ban"></i></span>
                         No Copying, Resale, or Reverse Engineering
                     </h3>
                     <p>This website and the plugin must not be copied, resold, or reverse engineered in any way. All rights to the code, assets, and content remain with the author. You may not redistribute, repackage, sell, or attempt to extract or reconstruct the source of the plugin or any part of this website without explicit permission.</p>
-                </div>
+                </article>
 
-                <div class="terms-block">
+                <article class="terms-block">
+                    <span class="terms-number">03</span>
                     <h3 class="terms-heading">
                         <span class="terms-heading-icon"><i class="fas fa-font"></i></span>
                         Proliatica Font
                     </h3>
-                    <p>The Proliatica typeface, which this site uses for the LOTN title, is a personal, proprietary font created by me. It must not be used in any way by anyone. You may not download, copy, embed, redistribute, or include Proliatica in any project, website, or product. All rights to the font are reserved.</p>
-                </div>
+                    <p>The Proliatica typeface, which this site uses, is a personal font created by me. It must not be used in any way by anyone. You may not download, copy, embed, redistribute, or include Proliatica in any project, website, or product. All rights to the font are reserved.</p>
+                </article>
+
+                <a href="index.html" class="terms-back"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
             </div>
         </div>
     </section>
@@ -101,7 +112,7 @@
                 <p class="footer-copyright">&copy; 2026 LokAhst. All rights reserved.</p>
                 <nav class="footer-links" aria-label="Footer">
                     <a href="index.html" class="footer-link">Home</a>
-                    <a href="terms.html" class="footer-link">Terms</a>
+                    <a href="Team.html" class="footer-link">Team</a>
                     <a href="discord.html" class="footer-link">Discord</a>
                 </nav>
             </div>
