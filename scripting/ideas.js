@@ -56,6 +56,17 @@
 
       // Working on ---------------------
 
+      {
+         name: 'Shouts',
+         status: '2',
+         description: 'Skyrim-like shouts with cooldowns, using double shift mechanism.'
+      },
+      {
+         name: 'Word walls',
+         status: '2',
+         description: 'Custom-built word walls, that randomly spawns around the world.'
+      },
+
       // Planned ---------------------
       {
          name: 'Web Panel',
@@ -81,11 +92,6 @@
          name: 'Spell tomes',
          status: '3',
          description: 'Learning how magicka and magic work?'
-      },
-      {
-         name: 'Shouts',
-         status: '3',
-         description: 'Skyrim-like shouts with cooldowns, using double shift mechanism.'
       },
 
       // Canceled ---------------------
