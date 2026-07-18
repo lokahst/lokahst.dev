@@ -84,6 +84,11 @@
          description: 'Completely custom realistically generated world. Disabled Nether & End. '
       },
       {
+         name: 'Dragon Update',
+         status: '3',
+         description: 'Spawns dragons in overworld.'
+      },
+      {
          name: 'Different races',
          status: '3',
          description: 'Introduce races with distinct starting stats and abilities.'
