@@ -53,19 +53,18 @@
          status: '1',
          description: 'New alchemy and crafting system. Creating new potions with various effects, using different ingredients.'
       },
-
-      // Working on ---------------------
-
       {
          name: 'Shouts',
-         status: '2',
+         status: '1',
          description: 'Skyrim-like shouts with cooldowns, using double shift mechanism.'
       },
       {
          name: 'Boss Update',
-         status: '2',
+         status: '1',
          description: 'For some lowered health and for some doubled it..'
       },
+
+      // Working on ---------------------
 
       // Planned ---------------------
       {
