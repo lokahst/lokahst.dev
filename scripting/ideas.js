@@ -62,12 +62,17 @@
          description: 'Skyrim-like shouts with cooldowns, using double shift mechanism.'
       },
       {
-         name: 'Word walls',
+         name: 'Boss Update',
          status: '2',
-         description: 'Custom-built word walls, that randomly spawns around the world.'
+         description: 'For some lowered health and for some doubled it..'
       },
 
       // Planned ---------------------
+      {
+         name: 'Word walls',
+         status: '3',
+         description: 'Custom-built word walls, that randomly spawns around the world.'
+      },
       {
          name: 'Web Panel',
          status: '3',
