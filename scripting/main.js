@@ -1,12 +1,10 @@
 const PLUGINS = [
   {
     slug: 'lotn',
-    icon: 'assets/lotn.webp',
     modrinthUrl: 'https://modrinth.com/plugin/lotn',
   },
   {
     slug: 'valentines',
-    icon: 'assets/valentines.webp',
     modrinthUrl: 'https://modrinth.com/plugin/valentines',
   },
 ];
@@ -49,8 +47,6 @@ async function fetchLatestGithubRelease() {
     },
   };
 
-  // GitHub's /latest endpoint ignores prereleases. LotN may currently only
-  // have prerelease builds, so fall back to the normal releases list.
   try {
     return await fetchJson(`${GITHUB_RELEASES_API}/latest`, options);
   } catch (error) {
@@ -174,16 +170,11 @@ async function loadPlugin(plugin) {
   const card = document.querySelector(`.plugin-card[data-slug="${plugin.slug}"]`);
   if (!card) return;
 
-  const icon = card.querySelector('.plugin-icon');
-  icon.src = plugin.icon;
-  icon.alt = `${plugin.slug} plugin icon`;
-
   try {
     const data = await fetchJson(
       `https://api.modrinth.com/v2/project/${plugin.slug}`
     );
 
-    icon.alt = `${data.title || plugin.slug} plugin icon`;
     card.querySelector('.plugin-name').textContent = data.title || plugin.slug;
     card.querySelector('.plugin-summary').textContent =
       data.description || 'No description provided.';
