@@ -1,7 +1,7 @@
 const PLUGINS = [
   {
     slug: 'lotn',
-    modrinthUrl: 'https://modrinth.com/plugin/lotn',
+    modrinthUrl: 'https://github.com/lokahst/lotn/releases/download/LotN_0.0.0-EarlyAccess.10/LotN_0.0.0-EarlyAccess.10.jar',
   },
   {
     slug: 'valentines',
