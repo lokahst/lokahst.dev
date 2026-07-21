@@ -191,14 +191,6 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 14px;
 }
-.plugin-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: var(--bg-muted);
-  border: 1px solid var(--border);
-  object-fit: cover;
-}
 .plugin-titles { display: flex; flex-direction: column; }
 .plugin-name {
   font-size: 18px;

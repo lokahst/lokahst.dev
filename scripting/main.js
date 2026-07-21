@@ -15,7 +15,7 @@ const GITHUB_RELEASES_API =
   'https://api.github.com/repos/lokahst/lotn/releases';
 
 function formatDate(iso) {
-  if (!iso) return '—';
+  if (!iso) return '-';
   const d = new Date(iso);
   return d.toLocaleDateString('en-US', {
     year: 'numeric',
@@ -25,7 +25,7 @@ function formatDate(iso) {
 }
 
 function formatNumber(n) {
-  if (n == null) return '—';
+  if (n == null) return '-';
   return n.toLocaleString('en-US');
 }
 
@@ -191,7 +191,7 @@ async function loadPlugin(plugin) {
     const versionEl = card.querySelector('.stat-version');
     const updatedEl = card.querySelector('.stat-updated');
 
-    versionEl.textContent = '—';
+    versionEl.textContent = '-';
     updatedEl.textContent = formatDate(data.updated);
 
     try {
@@ -200,7 +200,7 @@ async function loadPlugin(plugin) {
       );
       if (Array.isArray(versions) && versions.length > 0) {
         const latest = versions[0];
-        versionEl.textContent = latest.version_number || latest.name || '—';
+        versionEl.textContent = latest.version_number || latest.name || '-';
         updatedEl.textContent = formatDate(latest.date_published || data.updated);
 
         const dlBtn = card.querySelector('.plugin-download');
