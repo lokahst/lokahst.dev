@@ -1,257 +1,166 @@
 const PLUGINS = [
   {
     slug: 'lotn',
-    modrinthUrl: 'https://github.com/lokahst/lotn/releases/download/LotN_0.0.0-EarlyAccess.10/LotN_0.0.0-EarlyAccess.10.jar',
+    url: 'https://github.com/lokahst/lotn/releases/download/LotN_0.0.0-EarlyAccess.10/LotN_0.0.0-EarlyAccess.10.jar',
   },
   {
     slug: 'valentines',
-    modrinthUrl: 'https://modrinth.com/plugin/valentines',
+    url: 'https://modrinth.com/plugin/valentines',
   },
 ];
 
-const GITHUB_RELEASES_API =
-  'https://api.github.com/repos/lokahst/lotn/releases';
-
 function formatDate(iso) {
   if (!iso) return '-';
-  const d = new Date(iso);
-  return d.toLocaleDateString('en-US', {
+
+  const date = new Date(iso);
+
+  if (Number.isNaN(date.getTime())) {
+    return '-';
+  }
+
+  return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
   });
 }
 
-function formatNumber(n) {
-  if (n == null) return '-';
-  return n.toLocaleString('en-US');
+function formatNumber(number) {
+  if (number == null) return '-';
+  return Number(number).toLocaleString('en-US');
 }
 
 async function fetchJson(url, options = {}) {
-  const res = await fetch(url, options);
+  const response = await fetch(url, {
+    cache: 'no-store',
+    ...options,
+  });
 
-  if (!res.ok) {
-    const error = new Error(`${res.status} ${res.statusText}`);
-    error.status = res.status;
-    throw error;
+  if (!response.ok) {
+    throw new Error(
+      `Request failed: ${response.status} ${response.statusText}`
+    );
   }
 
-  return res.json();
-}
-
-async function fetchLatestGithubRelease() {
-  const options = {
-    headers: {
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  };
-
-  try {
-    return await fetchJson(`${GITHUB_RELEASES_API}/latest`, options);
-  } catch (error) {
-    if (error.status !== 404) throw error;
-  }
-
-  const releases = await fetchJson(`${GITHUB_RELEASES_API}?per_page=10`, options);
-  const latest = releases.find((release) => !release.draft);
-
-  if (!latest) {
-    const error = new Error('No published GitHub releases found.');
-    error.status = 404;
-    throw error;
-  }
-
-  return latest;
-}
-
-function renderMarkdown(md) {
-  const escapeHtml = (value) =>
-    value
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-
-  const inline = (value) =>
-    escapeHtml(value)
-      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2">')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-      .replace(/`([^`]+)`/g, '<code>$1</code>')
-      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-  const lines = md.replace(/\r\n?/g, '\n').split('\n');
-  const html = [];
-  let paragraph = [];
-  let listType = null;
-  let inCode = false;
-  let codeLines = [];
-
-  const flushParagraph = () => {
-    if (!paragraph.length) return;
-    html.push(`<p>${inline(paragraph.join(' '))}</p>`);
-    paragraph = [];
-  };
-
-  const closeList = () => {
-    if (!listType) return;
-    html.push(`</${listType}>`);
-    listType = null;
-  };
-
-  for (const line of lines) {
-    if (line.trim().startsWith('```')) {
-      flushParagraph();
-      closeList();
-
-      if (inCode) {
-        html.push(`<pre><code>${escapeHtml(codeLines.join('\n'))}</code></pre>`);
-        codeLines = [];
-        inCode = false;
-      } else {
-        inCode = true;
-      }
-      continue;
-    }
-
-    if (inCode) {
-      codeLines.push(line);
-      continue;
-    }
-
-    const trimmed = line.trim();
-
-    if (!trimmed) {
-      flushParagraph();
-      closeList();
-      continue;
-    }
-
-    const heading = trimmed.match(/^(#{1,3})\s+(.+)$/);
-    if (heading) {
-      flushParagraph();
-      closeList();
-      const level = heading[1].length;
-      html.push(`<h${level}>${inline(heading[2])}</h${level}>`);
-      continue;
-    }
-
-    const ordered = trimmed.match(/^\d+\.\s+(.+)$/);
-    const unordered = trimmed.match(/^[-*]\s+(.+)$/);
-
-    if (ordered || unordered) {
-      flushParagraph();
-      const wantedType = ordered ? 'ol' : 'ul';
-
-      if (listType !== wantedType) {
-        closeList();
-        html.push(`<${wantedType}>`);
-        listType = wantedType;
-      }
-
-      html.push(`<li>${inline((ordered || unordered)[1])}</li>`);
-      continue;
-    }
-
-    closeList();
-    paragraph.push(trimmed);
-  }
-
-  flushParagraph();
-  closeList();
-
-  if (inCode) {
-    html.push(`<pre><code>${escapeHtml(codeLines.join('\n'))}</code></pre>`);
-  }
-
-  return html.join('');
+  return response.json();
 }
 
 async function loadPlugin(plugin) {
-  const card = document.querySelector(`.plugin-card[data-slug="${plugin.slug}"]`);
+  const card = document.querySelector(
+    `.plugin-card[data-slug="${plugin.slug}"]`
+  );
+
   if (!card) return;
 
+  const nameEl = card.querySelector('.plugin-name');
+  const summaryEl = card.querySelector('.plugin-summary');
+  const downloadsEl = card.querySelector('.stat-downloads');
+  const versionEl = card.querySelector('.stat-version');
+  const updatedEl = card.querySelector('.stat-updated');
+  const downloadButton = card.querySelector('.plugin-download');
+
   try {
-    const data = await fetchJson(
+    const project = await fetchJson(
       `https://api.modrinth.com/v2/project/${plugin.slug}`
     );
 
-    card.querySelector('.plugin-name').textContent = data.title || plugin.slug;
-    card.querySelector('.plugin-summary').textContent =
-      data.description || 'No description provided.';
+    if (nameEl) {
+      nameEl.textContent = project.title || plugin.slug;
+    }
 
-    const versionEl = card.querySelector('.stat-version');
-    const updatedEl = card.querySelector('.stat-updated');
+    if (summaryEl) {
+      summaryEl.textContent =
+        project.description || 'No description provided.';
+    }
 
-    versionEl.textContent = '-';
-    updatedEl.textContent = formatDate(data.updated);
+    if (downloadsEl) {
+      downloadsEl.textContent = formatNumber(project.downloads);
+    }
+
+    if (versionEl) {
+      versionEl.textContent = '-';
+    }
+
+    if (updatedEl) {
+      updatedEl.textContent = formatDate(project.updated);
+    }
+
+    if (downloadButton) {
+      downloadButton.href = plugin.url;
+      downloadButton.removeAttribute('download');
+    }
 
     try {
       const versions = await fetchJson(
         `https://api.modrinth.com/v2/project/${plugin.slug}/version`
       );
-      if (Array.isArray(versions) && versions.length > 0) {
-        const latest = versions[0];
-        versionEl.textContent = latest.version_number || latest.name || '-';
-        updatedEl.textContent = formatDate(latest.date_published || data.updated);
 
-        const dlBtn = card.querySelector('.plugin-download');
-        const primary = latest.files?.[0];
-        if (primary?.url) {
-          dlBtn.href = primary.url;
-          if (primary.filename) dlBtn.setAttribute('download', primary.filename);
-        } else {
-          dlBtn.href = plugin.modrinthUrl;
+      if (Array.isArray(versions) && versions.length > 0) {
+        const listedVersions = versions.filter(
+          (version) => version.status === 'listed'
+        );
+
+        const usableVersions =
+          listedVersions.length > 0 ? listedVersions : versions;
+
+        const latestVersion = [...usableVersions].sort((a, b) => {
+          return (
+            new Date(b.date_published).getTime() -
+            new Date(a.date_published).getTime()
+          );
+        })[0];
+
+        if (versionEl) {
+          versionEl.textContent =
+            latestVersion.version_number ||
+            latestVersion.name ||
+            '-';
+        }
+
+        if (updatedEl) {
+          updatedEl.textContent = formatDate(
+            latestVersion.date_published || project.updated
+          );
+        }
+
+        if (downloadButton) {
+          const primaryFile =
+            latestVersion.files?.find((file) => file.primary) ||
+            latestVersion.files?.[0];
+
+          downloadButton.href = primaryFile?.url || plugin.url;
+          downloadButton.removeAttribute('download');
         }
       }
-    } catch {
-      card.querySelector('.plugin-download').href = plugin.modrinthUrl;
+    } catch (error) {
+      console.error(
+        `Failed to load versions for ${plugin.slug}:`,
+        error
+      );
+    }
+  } catch (error) {
+    if (summaryEl) {
+      summaryEl.textContent =
+        'Could not load plugin data from Modrinth right now.';
     }
 
-    card.querySelector('.stat-downloads').textContent = formatNumber(
-      data.downloads
-    );
+    if (downloadButton) {
+      downloadButton.href = plugin.url;
+      downloadButton.removeAttribute('download');
+    }
 
-    card.removeAttribute('aria-busy');
-  } catch (err) {
-    card.querySelector('.plugin-summary').textContent =
-      'Could not load plugin data from Modrinth right now.';
-    card.querySelector('.plugin-download').href = plugin.modrinthUrl;
-    card.removeAttribute('aria-busy');
-    console.error(`Failed to load ${plugin.slug}:`, err);
-  }
-}
-
-async function loadChangelog() {
-  const card = document.getElementById('changelog-card');
-  const nameEl = card.querySelector('.changelog-name');
-  const tagEl = card.querySelector('.changelog-tag');
-  const bodyEl = document.getElementById('changelog-body');
-  const linkEl = document.getElementById('changelog-link');
-
-  try {
-    const release = await fetchLatestGithubRelease();
-
-    nameEl.textContent = release.name || release.tag_name || 'Latest release';
-    tagEl.textContent = release.tag_name || 'latest';
-    bodyEl.innerHTML = renderMarkdown(release.body || 'No changelog provided.');
-    if (release.html_url) linkEl.href = release.html_url;
-
-    card.removeAttribute('aria-busy');
-  } catch (err) {
-    nameEl.textContent = 'Unable to load changelog';
-    tagEl.textContent = 'error';
-    bodyEl.textContent =
-      err.status === 403
-        ? 'GitHub API rate limit reached. Try again later or open the releases page directly.'
-        : 'Could not fetch the latest release from GitHub. Try the GitHub releases page directly.';
-    console.error('Changelog fetch failed:', err);
+    console.error(`Failed to load ${plugin.slug}:`, error);
+  } finally {
     card.removeAttribute('aria-busy');
   }
 }
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearElement = document.getElementById('year');
 
-Promise.all(PLUGINS.map(loadPlugin)).catch((e) =>
-  console.error('Plugin load error:', e)
-);
-loadChangelog();
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+Promise.all(PLUGINS.map(loadPlugin)).catch((error) => {
+  console.error('Plugin load error:', error);
+});
