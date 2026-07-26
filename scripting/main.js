@@ -1,13 +1,12 @@
-const PLUGINS = [
-  {
-    slug: 'lotn',
-    url: 'https://github.com/lokahst/lotn/releases/download/LotN_0.0.0-EarlyAccess.10/LotN_0.0.0-EarlyAccess.10.jar',
-  },
-  {
-    slug: 'valentines',
-    url: 'https://modrinth.com/plugin/valentines',
-  },
-];
+const DOWNLOAD_LINKS = {
+  lotn: 'https://github.com/lokahst/lotn/releases',
+  valentines: 'https://modrinth.com/plugin/valentines/versions',
+};
+
+const PLUGINS = Object.entries(DOWNLOAD_LINKS).map(([slug, downloadUrl]) => ({
+  slug,
+  downloadUrl,
+}));
 
 function formatDate(iso) {
   if (!iso) return '-';
@@ -59,6 +58,11 @@ async function loadPlugin(plugin) {
   const updatedEl = card.querySelector('.stat-updated');
   const downloadButton = card.querySelector('.plugin-download');
 
+  if (downloadButton) {
+    downloadButton.href = plugin.downloadUrl;
+    downloadButton.removeAttribute('download');
+  }
+
   try {
     const project = await fetchJson(
       `https://api.modrinth.com/v2/project/${plugin.slug}`
@@ -83,11 +87,6 @@ async function loadPlugin(plugin) {
 
     if (updatedEl) {
       updatedEl.textContent = formatDate(project.updated);
-    }
-
-    if (downloadButton) {
-      downloadButton.href = plugin.url;
-      downloadButton.removeAttribute('download');
     }
 
     try {
@@ -123,14 +122,6 @@ async function loadPlugin(plugin) {
           );
         }
 
-        if (downloadButton) {
-          const primaryFile =
-            latestVersion.files?.find((file) => file.primary) ||
-            latestVersion.files?.[0];
-
-          downloadButton.href = primaryFile?.url || plugin.url;
-          downloadButton.removeAttribute('download');
-        }
       }
     } catch (error) {
       console.error(
@@ -142,11 +133,6 @@ async function loadPlugin(plugin) {
     if (summaryEl) {
       summaryEl.textContent =
         'Could not load plugin data from Modrinth right now.';
-    }
-
-    if (downloadButton) {
-      downloadButton.href = plugin.url;
-      downloadButton.removeAttribute('download');
     }
 
     console.error(`Failed to load ${plugin.slug}:`, error);
